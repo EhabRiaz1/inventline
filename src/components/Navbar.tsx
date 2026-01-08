@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import { Menu, X } from 'lucide-react';
+import ContactModal from './ContactModal';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   const navItems = [
     { name: 'Home', to: 'home' },
@@ -14,7 +16,8 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="w-full flex justify-between items-center px-6 md:px-16 py-6">
+    <>
+      <div className="w-full flex justify-between items-center px-6 md:px-16 py-6">
       {/* Logo */}
       <div>
         <span className="text-2xl font-bold text-blue-400">Invent Line Trading</span>
@@ -38,7 +41,11 @@ const Navbar = () => {
       </div>
 
       {/* Desktop CTA Button */}
-      <button className="hidden md:block bg-black/30 backdrop-blur-sm border border-slate-700 text-white px-6 py-2 rounded-full hover:bg-black/50 transition-colors">
+      <button
+        type="button"
+        onClick={() => setIsContactOpen(true)}
+        className="hidden md:block bg-black/30 backdrop-blur-sm border border-slate-700 text-white px-6 py-2 rounded-full hover:bg-black/50 transition-colors"
+      >
         Contact Us
       </button>
 
@@ -89,13 +96,23 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <button className="mt-4 bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors">
+            <button
+              type="button"
+              className="mt-4 bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors"
+              onClick={() => {
+                setIsOpen(false);
+                setIsContactOpen(true);
+              }}
+            >
               Contact Us
             </button>
           </div>
         </div>
       </div>
-    </div>
+      </div>
+
+      <ContactModal open={isContactOpen} onClose={() => setIsContactOpen(false)} />
+    </>
   );
 };
 

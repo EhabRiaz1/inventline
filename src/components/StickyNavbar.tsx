@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { Menu, X } from 'lucide-react';
+import ContactModal from './ContactModal';
 
 const StickyNavbar = () => {
   const [visible, setVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     // Check if the device is mobile
@@ -52,12 +54,13 @@ const StickyNavbar = () => {
   if (!visible || isMobile) return null;
 
   return (
-    <div className="fixed top-5 left-0 right-0 z-50 flex justify-center w-full pointer-events-none">
-      <div className="w-[95%] max-w-[1200px] rounded-full bg-slate-900 backdrop-blur-lg border border-blue-500/30 shadow-2xl px-6 md:px-8 py-4 flex justify-between items-center pointer-events-auto">
-        {/* Logo */}
-        <div>
-          <span className="text-xl font-bold text-blue-400">Invent Line Trading</span>
-        </div>
+    <>
+      <div className="fixed top-5 left-0 right-0 z-50 flex justify-center w-full pointer-events-none">
+        <div className="w-[95%] max-w-[1200px] rounded-full bg-slate-900 backdrop-blur-lg border border-blue-500/30 shadow-2xl px-6 md:px-8 py-4 flex justify-between items-center pointer-events-auto">
+          {/* Logo */}
+          <div>
+            <span className="text-xl font-bold text-blue-400">Invent Line Trading</span>
+          </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -77,7 +80,11 @@ const StickyNavbar = () => {
         </div>
 
         {/* Desktop CTA Button */}
-        <button className="hidden md:block bg-blue-600 text-white px-5 py-1.5 rounded-full hover:bg-blue-700 transition-colors text-sm font-medium">
+        <button
+          type="button"
+          onClick={() => setIsContactOpen(true)}
+          className="hidden md:block bg-blue-600 text-white px-5 py-1.5 rounded-full hover:bg-blue-700 transition-colors text-sm font-medium"
+        >
           Contact Us
         </button>
         
@@ -161,15 +168,20 @@ const StickyNavbar = () => {
             >
               <button 
                 className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 transition-all transform hover:scale-105"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsContactOpen(true);
+                }}
               >
                 Contact Us
               </button>
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+      <ContactModal open={isContactOpen} onClose={() => setIsContactOpen(false)} />
+    </>
   );
 };
 

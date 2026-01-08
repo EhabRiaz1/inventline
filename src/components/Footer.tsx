@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -14,18 +14,20 @@ const Footer = () => {
             <p className="text-gray-400 mb-6">
               Connecting markets across UAE and Pakistan with premium commodities and reliable trading solutions.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Facebook size={18} className="text-white" />
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="tel:+97143979044"
+                className="inline-flex items-center gap-2 rounded-full bg-slate-800/80 border border-slate-700 px-4 py-2 text-sm text-white hover:bg-emerald-600 hover:border-emerald-500/40 transition-colors"
+              >
+                <Phone size={16} />
+                Call
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Twitter size={18} className="text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Linkedin size={18} className="text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Instagram size={18} className="text-white" />
+              <a
+                href="mailto:info@inventline.ae"
+                className="inline-flex items-center gap-2 rounded-full bg-slate-800/80 border border-slate-700 px-4 py-2 text-sm text-white hover:bg-blue-600 hover:border-blue-500/40 transition-colors"
+              >
+                <Mail size={16} />
+                Email
               </a>
             </div>
           </div>
