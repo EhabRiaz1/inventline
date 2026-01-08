@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #3B82F6;
+  --primary-dark: #2563EB;
+}
+
+body {
+  background-color: #0F172A;
+  color: #E2E8F0;
+}
+
+.logistics-animation {
+  perspective: 1000px;
+}
+
+.truck-container {
+  animation: moveRight 20s linear infinite;
+}
+
+@keyframes moveRight {
+  0% {
+    transform: translateX(-100%) rotateY(15deg);
+  }
+  100% {
+    transform: translateX(100%) rotateY(15deg);
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #60A5FA, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ultra-blur {
+  backdrop-filter: blur(20px);
+}
